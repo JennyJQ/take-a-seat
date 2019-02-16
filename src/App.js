@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import Seat from './components/Seat';
 import './App.css';
 
+import * as firebase from 'firebase/app';
+
+firebase.initializeApp({
+  apiKey: "AIzaSyBnA78TMXx32zuPVxvp0p7Y13vPvG7wrcY",
+  authDomain: "library-sensor.firebaseapp.com",
+  databaseURL: "https://library-sensor.firebaseio.com",
+  projectId: "library-sensor",
+  storageBucket: "library-sensor.appspot.com",
+  messagingSenderId: "336692978466"
+});
+
 class App extends Component {
   render() {
     return (

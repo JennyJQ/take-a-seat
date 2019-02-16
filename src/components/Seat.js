@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import * as firebase from 'firebase/app';
+import 'firebase/database';
 
 export default class Seat extends Component {
   constructor(props) {
@@ -15,14 +17,10 @@ export default class Seat extends Component {
       "open": "#2ecc71"
     };
   }
-  turnGreen = () => {
-    this.setState({ status: "open" });
-  }
-  turnGray = () => {
-    this.setState({ status: "reserved" });
-  }
-  turnRed = () => {
-    this.setState({ status: "in-use" });
+  componentDidMount = () => {
+    firebase.database().ref(`/seats/${this.state.id}/status`).on('value', (snapshot) => {
+      this.setState({ status: snapshot.val() });
+    });
   }
   render() {
     const { id, status } = this.state;
@@ -45,7 +43,6 @@ const styles = {
     borderStyle: "solid",
     borderColor: "black",
     justifySelf: "center",
-    cursor: "pointer",
     userSelect: "none"
   },
   text: {
