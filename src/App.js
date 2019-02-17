@@ -17,9 +17,25 @@ class App extends Component {
   render() {
     return (
       <div style={styles.root}>
-        <div style={styles.grid}>
-          {Array(12).fill(true).map((foo, i) => <Seat key={i} id={i + 1} />)}
+        <div className="jumbotron jumbotron-fluid">
+          <div className="container">
+            <h1 className="display-3">Study Spaces</h1>
+          </div>
         </div>
+          <div className="jumbotron jumbotron-fluid">
+            <div className="container">
+              <h2 className="display-4">Fluid Jumbotron</h2>
+              <div style={styles.grid}>
+                {Array(12).fill(true).map((foo, i) => <Seat key={i} id={i + 1} />)}
+              </div>
+            </div>
+          </div>
+          {/* <div className="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Take a break!</strong> You have been studying for way too long. 
+            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div> */}
       </div>
     );
   }
@@ -28,15 +44,16 @@ class App extends Component {
 const styles = {
   root: {
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     width: "100vw",
-    height: "100vh"
+    height: "100vh",
+    backgroundColor: "#e9ecef"
   },
   grid: {
-    display: "inline-grid",
+    display: "grid",
     gridTemplateColumns: "repeat(3, 1fr)",
-    width: "30%"
   }
 }
 
